@@ -71,6 +71,14 @@ contract Ballot {
 		voters[voter].weight = 1;
 	}
 	
+	// Give several `voters` the right to vote on this ballot.
+	// May only be called by `chairperson`
+	function giveRightsToVote(address[] sevVoters) public {
+		for (uint v = 0; v < sevVoters.length; v++) {
+			giveRightToVote(sevVoters[v]);
+		}
+	}
+	
 	
 	/// Delegate your vote to the voter `to`
 	function delegate(address to) public {
